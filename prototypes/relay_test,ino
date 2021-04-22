@@ -1,0 +1,30 @@
+/*
+ * Test Relay Module
+ */
+
+const int relay = A4;
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(relay, OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  if (Serial.available() > 0)
+  {
+    char value = Serial.read();
+
+    if (value == 'O')
+    {
+      digitalWrite(relay, HIGH);
+      Serial.println("RELAY ON");
+    }
+    else if (value == 'P')
+    {
+      digitalWrite(relay, LOW);
+      Serial.println("RELAY OFF");
+    }
+  }
+}
